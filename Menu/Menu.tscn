@@ -1,0 +1,102 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Menu/menu0.wav" type="AudioStream" id=1]
+[ext_resource path="res://Menu/DT Sans.png" type="Texture" id=2]
+[ext_resource path="res://Menu/Keret1.png" type="Texture" id=3]
+[ext_resource path="res://Menu/Menu.gd" type="Script" id=4]
+[ext_resource path="res://Fonts/determinationmonoweb-webfont.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Battle Engine/Sounds/Switch.wav" type="AudioStream" id=6]
+[ext_resource path="res://Menu/menu1.wav" type="AudioStream" id=7]
+[ext_resource path="res://Menu/Dusttale Sans.png" type="Texture" id=8]
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 32
+font_data = ExtResource( 5 )
+
+[node name="Menu" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Cam" type="Camera2D" parent="."]
+position = Vector2( 320, 240 )
+rotating = true
+current = true
+
+[node name="Text" type="Label" parent="."]
+margin_top = 401.0
+margin_right = 640.0
+margin_bottom = 480.0
+custom_fonts/font = SubResource( 3 )
+text = "Dusttrust: Pre-Leak"
+align = 1
+valign = 1
+
+[node name="Selection" type="Position2D" parent="."]
+position = Vector2( 320, 240 )
+
+[node name="1" type="Sprite" parent="Selection"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="DtSans" type="Sprite" parent="Selection/1"]
+z_index = -1
+texture = ExtResource( 2 )
+
+[node name="2" type="Sprite" parent="Selection"]
+position = Vector2( 340, 0 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="DusttaleSans" type="Sprite" parent="Selection/2"]
+z_index = -1
+texture = ExtResource( 8 )
+
+[node name="3" type="Sprite" parent="Selection"]
+position = Vector2( 680, 0 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="Selection/3"]
+margin_left = -76.0
+margin_top = -76.0
+margin_right = 76.0
+margin_bottom = 76.0
+custom_fonts/font = SubResource( 2 )
+text = "?"
+align = 1
+valign = 1
+
+[node name="Menu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
+
+[node name="MenuAlt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -80.0
+autoplay = true
+
+[node name="Select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 32.0
+margin_top = 512.0
+margin_right = 608.0
+margin_bottom = 928.0
+custom_fonts/mono_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 5 )
+bbcode_enabled = true
+bbcode_text = "              Settings
+"
+text = "              Settings
+"

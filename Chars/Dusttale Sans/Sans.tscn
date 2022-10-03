@@ -1,0 +1,101 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Chars/Dusttale Sans/Sans.gd" type="Script" id=1]
+[ext_resource path="res://Chars/Dusttale Sans/Sprites/Legs.png" type="Texture" id=2]
+[ext_resource path="res://Chars/Dusttale Sans/Sprites/Torso.png" type="Texture" id=3]
+[ext_resource path="res://Chars/Dusttale Sans/Sprites/Left Arm Opened.png" type="Texture" id=4]
+[ext_resource path="res://Chars/Dusttale Sans/Sprites/Right Arm Opened.png" type="Texture" id=5]
+[ext_resource path="res://Chars/Dusttale Sans/Sprites/Head.png" type="Texture" id=6]
+[ext_resource path="res://Chars/Dusttale Sans/Sprites/Head1.png" type="Texture" id=7]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+// naming in UV system _x_y
+uniform vec2 offset_0_0 = vec2(0.0, 0.0);
+uniform vec2 offset_0_1 = vec2(0.0, 0.0);
+uniform vec2 offset_1_0 = vec2(0.0, 0.0);
+uniform vec2 offset_1_1 = vec2(0.0, 0.0);
+
+vec2 sample_point(vec2 point) {
+    // Corners for UV.y == 0
+    vec2 p_0_0 = vec2(0,0) - offset_0_0;
+    vec2 p_1_0 = vec2(0,0) - offset_1_0;
+    // Get point along line UV.y == 0
+    vec2 d_x_0 = p_0_0 + (p_1_0 - p_0_0) * point.x;
+
+    // Corners for UV.y == 1.0
+    vec2 p_0_1 = vec2(0, 0) - offset_0_1;
+    vec2 p_1_1 = vec2(0, 0) - offset_1_1;
+    // Get point along line UV.y == 1
+    vec2 d_x_1 = p_0_1 + (p_1_1 - p_0_1) * point.x;
+    // Get point for given UV.y
+    return d_x_0 + (d_x_1 - d_x_0) * point.y;
+}
+
+void fragment() {
+    //COLOR = vec4(UV.x, UV.y, .0, 1.0);
+    //COLOR = texture(TEXTURE, UV);
+    //COLOR = texture(TEXTURE, sample_point(UV));
+}
+
+void vertex() {
+    VERTEX += sample_point(UV);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/offset_0_0 = Vector2( 0, 0 )
+shader_param/offset_0_1 = Vector2( 0, 0 )
+shader_param/offset_1_0 = Vector2( 0, 0 )
+shader_param/offset_1_1 = Vector2( 0, 0 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Sans" type="Position2D"]
+position = Vector2( 320, 240 )
+scale = Vector2( 2, 2 )
+z_index = 2
+script = ExtResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Legs" type="Sprite" parent="."]
+material = SubResource( 2 )
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -26, -24 )
+
+[node name="Torso" type="Sprite" parent="Legs"]
+position = Vector2( 0, -21 )
+texture = ExtResource( 3 )
+centered = false
+offset = Vector2( -22, -54 )
+
+[node name="Head" type="AnimatedSprite" parent="Legs/Torso"]
+position = Vector2( 0, -21 )
+z_index = -1
+frames = SubResource( 3 )
+centered = false
+offset = Vector2( -16, -29 )
+
+[node name="Left" type="Sprite" parent="Legs/Torso"]
+position = Vector2( -20, -17 )
+z_index = -1
+texture = ExtResource( 4 )
+centered = false
+offset = Vector2( -19, -11 )
+
+[node name="Right" type="Sprite" parent="Legs/Torso"]
+position = Vector2( 19, -17 )
+z_index = -1
+texture = ExtResource( 5 )
+centered = false
+offset = Vector2( -2, -11 )
