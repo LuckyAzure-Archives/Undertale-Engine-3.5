@@ -341,7 +341,6 @@ collision/safe_margin = 0.01
 [node name="WalkingSoul" type="AnimatedSprite" parent="Soul/Soul"]
 visible = false
 frames = SubResource( 31 )
-frame = 1
 playing = true
 offset = Vector2( 0, 4 )
 
@@ -576,7 +575,7 @@ margin_bottom = 104.0
 rect_pivot_offset = Vector2( 245, 18 )
 custom_fonts/normal_font = SubResource( 16 )
 bbcode_enabled = true
-bbcode_text = "[center][img]res://Battle Engine Stuffs/Fight Effects/Damage Counter/damage_9.png[img]res://Battle Engine Stuffs/Fight Effects/Damage Counter/damage_9.png[img]res://Battle Engine Stuffs/Fight Effects/Damage Counter/damage_9.png"
+bbcode_text = "[center][img]res://Battle Engine/Actions/Fight Effects/Damage Counter/damage_9.png[img]res://Battle Engine/Actions/Fight Effects/Damage Counter/damage_9.png[img]res://Battle Engine/Actions/Fight Effects/Damage Counter/damage_9.png"
 scroll_active = false
 script = ExtResource( 7 )
 __meta__ = {
@@ -591,7 +590,6 @@ z_index = 23
 frames = SubResource( 17 )
 
 [node name="Miss" type="Sprite" parent="Actions/Fight"]
-visible = false
 position = Vector2( 320, 140 )
 texture = ExtResource( 24 )
 script = ExtResource( 3 )

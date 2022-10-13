@@ -67,7 +67,7 @@ func _process(delta):
 			$"Gaster Blaster Sprite/Gaster Blaster Laser Sprite".visible = true
 			scrollerlaser = lerp(scrollerlaser,laser, 20 * delta)
 		if timer > -100:
-			move_and_slide(Vector2(1, 0).rotated(rotation) * (0 - gasterspeed))
+			var _velocity = move_and_slide(Vector2(1, 0).rotated(rotation) * (0 - gasterspeed))
 		if gasterspeed < 1200:
 			gasterspeed += 5000 * delta
 		match timer:

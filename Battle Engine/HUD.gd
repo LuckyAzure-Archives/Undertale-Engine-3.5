@@ -5,7 +5,7 @@ var krtimer = 0
 func _ready():
 	$"Name".text = get_tree().get_current_scene().PlayerName
 
-func _process(delta):
+func _process(_delta):
 	$"LV Counter".text = str(get_tree().get_current_scene().LV)
 	$"HP Bar".rect_size.x = 1.20 * get_tree().get_current_scene().HPmax
 	$"HP Bar".max_value = get_tree().get_current_scene().HPmax

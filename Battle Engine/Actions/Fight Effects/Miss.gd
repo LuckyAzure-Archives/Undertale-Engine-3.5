@@ -1,23 +1,23 @@
 extends Sprite
 
-var Miss = 0
+var Anim = 0
 var MissSpeed = 0
 
-func _physics_process(delta):
+func _process(delta):
 	modulate = Color(1,1,1, (200 - position.y) * 0.01)
-	if Miss == 1:
+	if Anim == 1:
 		visible = 1
 		position.y = 200
 		rotation_degrees = -10
-		Miss = 2
-		MissSpeed = -10
-	if Miss == 2:
-		rotation_degrees += 0.5
-		MissSpeed += 0.40
-		position.y += MissSpeed
+		Anim = 2
+		MissSpeed = -500
+	if Anim == 2:
+		rotation_degrees += 35 * delta
+		MissSpeed += 1000 * delta
+		position.y += MissSpeed * delta
 		if position.y > 480:
-			Miss = 0
-			visible = 0
+			Anim = 0
+			visible = 1
 
 func Miss():
-	Miss = 1
+	Anim = 1

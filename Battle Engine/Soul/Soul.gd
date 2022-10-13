@@ -39,7 +39,7 @@ func _process(delta):
 	#this shit fixes the soul's weird pixel
 	#$Sprite.position = position - Vector2(round(position.x),round(position.y))
 
-func _red_delta(delta):
+func _red_delta(_delta):
 	var speed = 100
 	if Input.is_action_pressed("X"):
 		speed = speed / 2
@@ -55,7 +55,7 @@ func _red_delta(delta):
 		MoveX = speed
 	else:
 		MoveX=0
-	move_and_slide(Vector2(MoveX, MoveY))
+	var _velocity = move_and_slide(Vector2(MoveX, MoveY))
 
 var jump = 0
 
@@ -85,7 +85,6 @@ func _blue_delta(delta):
 					MoveY += 10 * (delta / 0.016667)
 			if is_on_ceiling():
 				MoveY = 10
-				print("kurva anyád")
 		"Left":
 			if Input.is_action_pressed("Up"):
 				MoveY = -speed
@@ -149,20 +148,22 @@ func _blue_delta(delta):
 					MoveX += 10 * (delta / 0.016667)
 			if is_on_ceiling():
 				MoveX = 10
+	var _velocity
 	match Soulrotate:
 		"Down":
 			rotation_degrees = 0
-			move_and_slide(Vector2(MoveX, MoveY),Vector2(0, -1))
+			_velocity = move_and_slide(Vector2(MoveX, MoveY),Vector2(0, -1))
 		"Left":
 			rotation_degrees = 90
-			move_and_slide(Vector2(MoveX, MoveY),Vector2(1, 0))
+			_velocity = move_and_slide(Vector2(MoveX, MoveY),Vector2(1, 0))
 		"Up":
 			rotation_degrees = 180
-			move_and_slide(Vector2(MoveX, MoveY),Vector2(0, 1))
+			_velocity = move_and_slide(Vector2(MoveX, MoveY),Vector2(0, 1))
 		"Right":
 			rotation_degrees = 270
-			move_and_slide(Vector2(MoveX, MoveY),Vector2(-1, 0))
+			_velocity = move_and_slide(Vector2(MoveX, MoveY),Vector2(-1, 0))
 
+var changescene
 
 func actheartpositioning(currentscene):
 	if currentscene.get_node("Actions").Act_Menu == 1:
@@ -180,7 +181,7 @@ func actheartpositioning(currentscene):
 				position.x = currentscene.get_node("Action Buttons/Act_Mercy").position.x - 39
 				position.y = currentscene.get_node("Action Buttons/Act_Mercy").position.y + 1
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var currentscene = get_tree().get_current_scene()
 	if currentscene.get_node("Soul/Soul").Damage == 1:
 		currentscene.get_node("SoundChannels/SFXSoulChannel1").stream = load("res://Battle Engine/Sounds/damage.wav")
@@ -190,7 +191,7 @@ func _physics_process(delta):
 			if currentscene.HP < 1:
 				Global.heartposx = currentscene.get_node("Soul/Soul").position.x
 				Global.heartposy = currentscene.get_node("Soul/Soul").position.y
-				get_tree().change_scene("res://Game Over/Game Over.tscn")
+				changescene = get_tree().change_scene("res://Game Over/Game Over.tscn")
 		else:
 			if currentscene.HP > 1 and currentscene.HP <= currentscene.BossDamage:
 				currentscene.HP = 1
@@ -201,7 +202,7 @@ func _physics_process(delta):
 			if currentscene.HPKR == 1 and currentscene.HP == 1:
 				Global.heartposx = currentscene.get_node("Soul/Soul").position.x
 				Global.heartposy = currentscene.get_node("Soul/Soul").position.y
-				get_tree().change_scene("res://Game Over/Game Over.tscn")
+				changescene = get_tree().change_scene("res://Game Over/Game Over.tscn")
 
 func _on_Hitbox_area_entered(area):
 	match area.name:

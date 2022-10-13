@@ -14,7 +14,7 @@ var ItemValue = 0
 var ItemTextActivate = false
 var ItemTextStart = false
 
-func _process(delta):
+func _process(_delta):
 	rect_position.x = int(get_tree().get_current_scene().get_node("Box/BattleBox").scroller.x - (get_tree().get_current_scene().get_node("Box/BattleBox").scrollersize.x * 0.5) + 15)
 	rect_position.y = int(get_tree().get_current_scene().get_node("Box/BattleBox").scroller.y - (get_tree().get_current_scene().get_node("Box/BattleBox").scrollersize.y * 0.5) + 13)
 
@@ -49,7 +49,7 @@ func _physics_process(delta):
 				TextFlag = false
 				ActTextStart = false
 
-func _Act_Text(delta):
+func _Act_Text(_delta):
 	if get_tree().get_current_scene().get_node("Actions").Act_Menu == 1:
 		TextID = "Normal"
 		_text = get_tree().get_current_scene().MainText

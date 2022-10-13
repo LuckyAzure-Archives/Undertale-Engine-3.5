@@ -3,7 +3,7 @@ extends Node
 func _ready():
 	get_parent().get_node("Soul/Soul").position = get_parent().get_node("Box/BattleBox").pos
 
-func _process(delta):
+func _process(_delta):
 	Act_Selecting()
 
 func _physics_process(delta):
@@ -354,7 +354,7 @@ func Fight_Animation(delta):
 				if ((get_tree().get_current_scene().ATK - get_tree().get_current_scene().BossDef) * damagecounter) <= 0:
 					miss = true
 				if get_tree().get_current_scene().DodgeAttack == true:
-					get_tree().get_current_scene()._DodgedAttack(delta)
+					get_tree().get_current_scene()._DodgedAttack()
 					$"Fight/Miss".Miss()
 					dodged = true
 					miss = true
@@ -400,7 +400,7 @@ func Fight_Animation(delta):
 						dodged = false
 					else:
 						$"Fight/Miss".Miss()
-					get_tree().get_current_scene()._Missed(delta)
+					get_tree().get_current_scene()._Missed()
 					damagecountertimer = 0
 					$"Fight/Attack Bar Background".visible = 0
 					Act_Fight = 5

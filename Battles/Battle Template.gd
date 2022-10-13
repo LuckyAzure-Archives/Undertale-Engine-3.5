@@ -26,9 +26,9 @@ var Talkafterslash = true
 var MainText = "* Test"
 
 func _ready():
-	$Music.play(36)
-	$"Actions".Act_Menu = 0
-	_BattleStart()
+	#$Music.play(36)
+	$"Actions".Act_Menu = 1
+	#_BattleStart()
 
 func _debug():
 	$Debug.text = "is_on_floor: " + str($Soul/Soul.is_on_floor()) + "\n"
@@ -94,13 +94,13 @@ var BossSpares = false
 func Spare():
 	pass
 
-func _FightGotHit(delta):
+func _FightGotHit():
 	Attack_Counter += 1
 
-func _Missed(delta):
+func _Missed():
 	pass
 
-func _DodgedAttack(delta):
+func _DodgedAttack():
 	pass
 
 var DialogueID = 1
@@ -134,7 +134,7 @@ var Attack_Timer = 0
 var Attack_Timer2 = 0
 var Attack_Timer3 = 0
 
-func _attacks(delta):
+func _attacks(_delta):
 	match Attack_Counter:
 		0:
 			if Attack_GlobalCounter > 150 and Attack_GlobalCounter < 180 and Attack_Timer == 0:
@@ -498,7 +498,7 @@ func _attacks(delta):
 	if Battle == 1:
 		Attack_GlobalCounter += 1
 
-func _timers(delta):
+func _timers(_delta):
 	if Attack_Timer > 0:
 		Attack_Timer -= 1
 	if Attack_Timer2 > 0:
@@ -510,7 +510,6 @@ func _physics_process(delta):
 	_debug()
 	_dialogues()
 	_timers(delta)
-	_testing(delta)
 	if Battle == 1:
 		_attacks(delta)
 	if 0 == 1:
@@ -523,14 +522,14 @@ func redsoulactivate():
 func bluesoulactivate():
 	$Soul/Soul.SoulModes = 1
 
-func _process(delta):
+func _process(_delta):
 	get_node("Sans").position.y = get_node("Box/BattleBox").position.y - (get_node("Box/BattleBox").scrollersize.y * 0.5) - 12
 
 var gasterblasterload = load("res://Battle Engine/Attacks/Gaster Blaster/Gaster Blaster.tscn")
 var GasterBlaster = gasterblasterload.instance()
 
 func Gasterblaster(position, angle, size, from, lasertime, waittime, move, moveshot):
-	var GasterBlaster = gasterblasterload.instance()
+	GasterBlaster = gasterblasterload.instance()
 	add_child(GasterBlaster)
 	GasterBlaster.pos = position
 	GasterBlaster.angle = angle
@@ -545,15 +544,15 @@ var boneload = load("res://Battle Engine/Attacks/Bone/Bone.tscn")
 var bone = boneload.instance()
 
 func simplebone(position,size,movepos,lifetime):
-	var bone = boneload.instance()
+	bone = boneload.instance()
 	add_child(bone)
 	bone.pos = position
 	bone.size = size
 	bone.movepos = movepos
 	bone.lifetime = lifetime
 
-func bone(position,size,angle,movepos,movesize,minsize,maxsize,moveangle,lifetime):
-	var bone = boneload.instance()
+func normalbone(position,size,angle,movepos,movesize,minsize,maxsize,moveangle,lifetime):
+	bone = boneload.instance()
 	add_child(bone)
 	bone.pos = position
 	bone.size = size
@@ -566,7 +565,7 @@ func bone(position,size,angle,movepos,movesize,minsize,maxsize,moveangle,lifetim
 	bone.lifetime = lifetime
 
 func advancedbone(position,size,angle,movepos,movesize,minsize,maxsize,moveangle,changepos,changesize,changeangle,bounce,bouncespeed,lifetime):
-	var bone = boneload.instance()
+	bone = boneload.instance()
 	add_child(bone)
 	bone.pos = position
 	bone.size = size
@@ -582,10 +581,6 @@ func advancedbone(position,size,angle,movepos,movesize,minsize,maxsize,moveangle
 	bone.bounce = bounce
 	bone.bouncespeed = bouncespeed
 	bone.lifetime = lifetime
-
-func _testing(delta):
-	if Input.is_action_just_pressed("ui_end"):
-		pass
 
 func _BattleStart():
 	Attack_GlobalCounter = 0

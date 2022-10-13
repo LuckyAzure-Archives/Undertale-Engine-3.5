@@ -11,13 +11,12 @@ var scroller_zoom = 1
 var scrollspeed = 0.1
 var scrollerspeed = 0.1
 
-var shake
 var scrollershake = 0
 
 func _process(delta):
 	scroll(delta)
 	positioning(delta)
-	shake(delta)
+	shake()
 
 func scroll(delta):
 	scrollerspeed = lerp(scrollerspeed,scrollspeed,0.1 * (delta / 0.016667))
@@ -26,12 +25,12 @@ func scroll(delta):
 	scroller_zoom = lerp(scroller_zoom,_zoom,scrollerspeed * (delta / 0.016667))
 	scrollershake = lerp(scrollershake,0,0.1 * (delta / 0.016667))
 
-func positioning(delta):
+func positioning(_delta):
 	position.x = scroller_pos.x
 	position.y = scroller_pos.y
 	rotation_degrees = scroller_angle
 	zoom = Vector2(scroller_zoom,scroller_zoom)
 
-func shake(delta):
+func shake():
 	position.x += int(rand_range(0 - scrollershake, scrollershake))
 	position.y += int(rand_range(0 - scrollershake, scrollershake))

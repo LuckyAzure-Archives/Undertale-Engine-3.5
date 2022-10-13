@@ -7,7 +7,7 @@ var count = 0
 func _ready():
 	bbcode_text = "[center]"
 
-func _physics_process(delta):
+func _process(_delta):
 	if read == 1:
 		for i in len(_Text):
 			if len(_Text) > count:
