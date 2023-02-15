@@ -422,7 +422,7 @@ func Fight_Animation(delta):
 				if Talk == true:
 					get_tree().get_current_scene().get_node("TextBubble").ActivateDialogue()
 					Talk = false
-					get_tree().get_current_scene().Battle = 0.5
+					Battle.steps = 0.5
 				else:
 					get_tree().get_current_scene()._BattleStart()
 

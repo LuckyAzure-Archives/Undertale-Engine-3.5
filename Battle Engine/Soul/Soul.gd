@@ -19,14 +19,14 @@ func _ready():
 func _process(delta):
 	var currentscene = get_tree().get_current_scene()
 	$Sprite.frame = SoulModes
-	if currentscene.Battle == 0:
+	if Battle.steps == 0:
 		if currentscene.get_node("Actions").Act_Menu == 1:
 			actheartpositioning(currentscene)
-	if get_tree().get_current_scene().Battle == 0.5:
+	if Battle.steps == 0.5:
 		visible = 1
 		position = get_tree().get_current_scene().get_node("Box/BattleBox").pos
 	var oldpos = position
-	if get_tree().get_current_scene().Battle == 1:
+	if Battle.steps == 1:
 		match SoulModes:
 			0:
 				_red_delta(delta)
@@ -73,16 +73,14 @@ func _blue_delta(delta):
 				MoveX = 0
 			if is_on_floor():
 				jump = 0
-				MoveY = 0
 			if is_on_floor() and Input.is_action_pressed("Up"):
 				MoveY = -300
 				jump = 1
 			if MoveY < -50 and jump == 1 and not Input.is_action_pressed("Up"):
 				MoveY = -50
 				jump = 0
-			if not is_on_floor():
-				if MoveY < 200:
-					MoveY += 10 * (delta / 0.016667)
+			if MoveY < 200:
+				MoveY += 10 * (delta / 0.016667)
 			if is_on_ceiling():
 				MoveY = 10
 		"Left":
@@ -94,16 +92,15 @@ func _blue_delta(delta):
 				MoveY = 0
 			if is_on_floor():
 				jump = 0
-				MoveX = 0
+				MoveX = 200
 			if is_on_floor() and Input.is_action_pressed("Right"):
 				MoveX = 300
 				jump = 1
 			if MoveX > 50 and jump == 1 and not Input.is_action_pressed("Right"):
 				MoveX = 50
 				jump = 0
-			if not is_on_floor():
-				if MoveX > -200:
-					MoveX += -10 * (delta / 0.016667)
+			if MoveX > -200:
+				MoveX += -10 * (delta / 0.016667)
 			if is_on_ceiling():
 				MoveX = -10
 		"Up":
@@ -115,16 +112,15 @@ func _blue_delta(delta):
 				MoveX = 0
 			if is_on_floor():
 				jump = 0
-				MoveY = 0
+				MoveY = 200
 			if is_on_floor() and Input.is_action_pressed("Down"):
 				MoveY = 300
 				jump = 1
 			if MoveY > 50 and jump == 1 and not Input.is_action_pressed("Down"):
 				MoveY = 50
 				jump = 0
-			if not is_on_floor():
-				if MoveY > -200:
-					MoveY += -10 * (delta / 0.016667)
+			if MoveY > -200:
+				MoveY += -10 * (delta / 0.016667)
 			if is_on_ceiling():
 				MoveY = -10
 		"Right":
@@ -136,16 +132,15 @@ func _blue_delta(delta):
 				MoveY = 0
 			if is_on_floor():
 				jump = 0
-				MoveX = 0
+				MoveX = 100
 			if is_on_floor() and Input.is_action_pressed("Left"):
 				MoveX = -300
 				jump = 1
 			if MoveX < -50 and jump == 1 and not Input.is_action_pressed("Left"):
 				MoveX = -50
 				jump = 0
-			if not is_on_floor():
-				if MoveX < 200:
-					MoveX += 10 * (delta / 0.016667)
+			if MoveX < 200:
+				MoveX += 10 * (delta / 0.016667)
 			if is_on_ceiling():
 				MoveX = 10
 	var _velocity

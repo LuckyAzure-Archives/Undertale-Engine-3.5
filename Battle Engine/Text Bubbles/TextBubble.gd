@@ -30,7 +30,7 @@ func NextDialogue():
 		dialoguecounter += 1
 	else:
 		TextFlag = false
-		get_tree().get_current_scene()._BattleStart()
+		Battle.BattleStart()
 
 func _Act_Text(_delta):
 	match TextFlag:

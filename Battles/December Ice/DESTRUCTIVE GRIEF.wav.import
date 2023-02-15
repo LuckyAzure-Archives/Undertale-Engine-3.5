@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/DESTRUCTIVE GRIEF.wav-3fd9dcdd853f1942a083d478e900640c.sample"
+
+[deps]
+
+source_file="res://Battles/December Ice/DESTRUCTIVE GRIEF.wav"
+dest_files=[ "res://.import/DESTRUCTIVE GRIEF.wav-3fd9dcdd853f1942a083d478e900640c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

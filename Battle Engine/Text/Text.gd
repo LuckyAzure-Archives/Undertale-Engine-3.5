@@ -19,7 +19,7 @@ func _process(_delta):
 	rect_position.y = int(get_tree().get_current_scene().get_node("Box/BattleBox").scroller.y - (get_tree().get_current_scene().get_node("Box/BattleBox").scrollersize.y * 0.5) + 13)
 
 func _physics_process(delta):
-	match get_tree().get_current_scene().Battle:
+	match Battle.steps:
 		0:
 			_Act_Text(delta)
 		1:

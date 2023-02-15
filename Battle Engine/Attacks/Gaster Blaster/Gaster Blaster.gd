@@ -9,6 +9,7 @@ var target_to_heart = false
 var target_to_pos = Vector2(0,0)
 var changepos = Vector2(0,0)
 var changeposshot = Vector2(0,0)
+var changeposshotspeed = Vector2(0,0)
 
 func _ready():
 	$Charge.play()
@@ -60,6 +61,7 @@ func _process(delta):
 		scrollerlaser = 0.0
 		laser = 1
 	if timer < 0:
+		changeposshot += changeposshotspeed * delta
 		position += changeposshot * delta
 		rotation_degrees = angle
 		if timer > (0 - lifetime):

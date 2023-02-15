@@ -19,10 +19,13 @@ config/icon="res://icon.png"
 [autoload]
 
 Global="*res://Global.gd"
+Attack="*res://Battle Engine/Attacks/Attack.gd"
+Battle="*res://Battle Engine/Battle.gd"
+Effect="*res://Battle Engine/Effects/Effects.tscn"
 
 [debug]
 
-settings/fps/force_fps=144
+settings/fps/force_fps=60
 settings/stdout/print_fps=true
 
 [display]
@@ -163,4 +166,4 @@ common/enable_pause_aware_picking=true
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
 environment/default_clear_color=Color( 0, 0, 0, 1 )
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://Chars/decice/default_env.tres"
