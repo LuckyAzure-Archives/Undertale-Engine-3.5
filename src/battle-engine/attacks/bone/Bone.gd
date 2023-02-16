@@ -74,7 +74,12 @@ func _process(delta):
 			position = position.linear_interpolate(gotopos, (scrollspeed * (delta / 0.016667)))
 			$"Bone Bottom/Bone Middle".scale.y += ((size + (sin(timer * bouncespeed) * bounce)) - $"Bone Bottom/Bone Middle".scale.y) * (scrollspeed * (delta / 0.016667))
 			rotation_degrees = lerp(rotation_degrees,angle,(scrollspeed * (delta / 0.016667)))
+	print(get_child_count())
 	if timer > lifetime:
-		queue_free()
+		if get_child_count() == 1:
+			queue_free()
+			print("ded")
 	elif position.x < -100 or position.x > 740 or position.y < -100 or position.y > 580:
-		queue_free()
+		if get_child_count() == 1:
+			queue_free()
+			print(get_child_count())

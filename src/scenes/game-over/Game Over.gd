@@ -1,7 +1,6 @@
 extends Node2D
 
 var brokenload = load("res://src/scenes/game-over/BrokenPiece.tscn")
-var broken = brokenload.instance()
 var timer = 0
 var dir = 0
 var scrolspe = 0

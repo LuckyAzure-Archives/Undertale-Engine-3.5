@@ -181,23 +181,11 @@ func Bone(counter):
 					0,0, #bounce, bouncespeed
 					200 #lifetime
 				)
-		500:
-			bonewheels()
-		560:
-			bonewheels()
-		620:
-			bonewheels()
-		680:
-			bonewheels()
-		740:
-			bonewheels()
-		800:
-			bonewheels()
 
 
 func Attack():
 	#Effect.Wave_Effect(0.02,100)
-	Bone(Attack.GlobalCounter)
+	#Bone(Attack.GlobalCounter)
 	match Attack.GlobalCounter:
 		0:
 			Global.scene().get_node("Music").play(0.0)
@@ -224,6 +212,7 @@ func Attack():
 			Global.scene().get_node("Camera")._zoom = 1
 			Global.scene().get_node("Camera").scrollershake = 10
 		388:
+			bonewheels()
 			shakeass()
 		506:
 			shakeass()
