@@ -17,13 +17,13 @@ func Bone(counter):
 				200 #lifetime
 			)
 		90:
-			for i in 6:
+			for i in 5:
 					Attack.advancedbone(
 					Vector2(240 - 12 * i,383), #position
 					20, #size
 					0, #angle
 					Vector2(4 ,0), #movepos
-					0,0,0, #movesize, minsize, maxsize
+					0.05 * i,20,100, #movesize, minsize, maxsize
 					0, #moveangle
 					Vector2(-0.05 - (i * 0.001),0), #changepos
 					0, #changesize
@@ -182,64 +182,17 @@ func Bone(counter):
 					200 #lifetime
 				)
 		500:
-			for i in 15:
-				Attack.advancedbone(
-					Vector2(150,385), #position
-					40, #size
-					i * 24, #angle
-					Vector2(3 ,0), #movepos
-					0,5,100, #movesize, minsize, maxsize
-					2, #moveangle
-					Vector2(0,0), #changepos
-					0, #changesize
-					0, #changeangle
-					0,0, #bounce, bouncespeed
-					200 #lifetime
-				)
-			for i in 15:
-				Attack.advancedbone(
-					Vector2(490,240), #position
-					40, #size
-					i * 24, #angle
-					Vector2(-3 ,0), #movepos
-					0,5,100, #movesize, minsize, maxsize
-					-2, #moveangle
-					Vector2(0,0), #changepos
-					0, #changesize
-					0, #changeangle
-					0,0, #bounce, bouncespeed
-					200 #lifetime
-				)
+			bonewheels()
 		560:
-			for i in 15:
-				Attack.advancedbone(
-					Vector2(150,385), #position
-					40, #size
-					i * 24, #angle
-					Vector2(3 ,0), #movepos
-					0,5,100, #movesize, minsize, maxsize
-					2, #moveangle
-					Vector2(0,0), #changepos
-					0, #changesize
-					0, #changeangle
-					0,0, #bounce, bouncespeed
-					200 #lifetime
-				)
-			for i in 15:
-				Attack.advancedbone(
-					Vector2(490,240), #position
-					40, #size
-					i * 24, #angle
-					Vector2(-3 ,0), #movepos
-					0,5,100, #movesize, minsize, maxsize
-					-2, #moveangle
-					Vector2(0,0), #changepos
-					0, #changesize
-					0, #changeangle
-					0,0, #bounce, bouncespeed
-					200 #lifetime
-				)
-
+			bonewheels()
+		620:
+			bonewheels()
+		680:
+			bonewheels()
+		740:
+			bonewheels()
+		800:
+			bonewheels()
 
 
 func Attack():
@@ -275,10 +228,8 @@ func Attack():
 		506:
 			shakeass()
 		624:
-			Battle.changeboxsize(Vector2(200,130))
 			shakeass()
 		742:
-			Battle.changeboxsize(Vector2(128,130))
 			shakeass()
 		860:
 			Global.scene().get_node("Camera").scrollerspeed = 0
@@ -295,3 +246,32 @@ func shakeass():
 	Global.scene().get_node("Camera").scroller_zoom = 0.9
 	Global.scene().get_node("Camera").scrollershake = 10
 	Battle.boxshake(10,5)
+
+func bonewheels():
+	for i in 15:
+		Attack.advancedbone(
+			Vector2(150,385), #position
+			40, #size
+			i * 24, #angle
+			Vector2(3 ,0), #movepos
+			0,5,100, #movesize, minsize, maxsize
+			2, #moveangle
+			Vector2(0,0), #changepos
+			0, #changesize
+			0, #changeangle
+			0,0, #bounce, bouncespeed
+			200 #lifetime
+		)
+		Attack.advancedbone(
+			Vector2(490,240), #position
+			40, #size
+			i * 24, #angle
+			Vector2(-3 ,0), #movepos
+			0,5,100, #movesize, minsize, maxsize
+			-2, #moveangle
+			Vector2(0,0), #changepos
+			0, #changesize
+			0, #changeangle
+			0,0, #bounce, bouncespeed
+			200 #lifetime
+		)

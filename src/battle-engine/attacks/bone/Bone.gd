@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Position2D
 
 var pos = Vector2(320,240)
 var size = 20
@@ -55,8 +55,6 @@ func _process(delta):
 		position = pos
 	$"Bone Bottom/Bone Middle/Bone Top".scale.y = 1 / $"Bone Bottom/Bone Middle".scale.y
 	timer += delta / 0.016667
-	if timer > lifetime:
-		queue_free()
 	match scrolltopos:
 		false:
 			movepos += changepos * (delta / 0.016667)
@@ -76,3 +74,7 @@ func _process(delta):
 			position = position.linear_interpolate(gotopos, (scrollspeed * (delta / 0.016667)))
 			$"Bone Bottom/Bone Middle".scale.y += ((size + (sin(timer * bouncespeed) * bounce)) - $"Bone Bottom/Bone Middle".scale.y) * (scrollspeed * (delta / 0.016667))
 			rotation_degrees = lerp(rotation_degrees,angle,(scrollspeed * (delta / 0.016667)))
+	if timer > lifetime:
+		queue_free()
+	elif position.x < -100 or position.x > 740 or position.y < -100 or position.y > 580:
+		queue_free()

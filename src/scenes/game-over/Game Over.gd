@@ -24,17 +24,17 @@ func _physics_process(delta):
 		$Camera.scroller_zoom -= 0.05
 	match timer:
 		50:
-			$AudioStreamPlayer.stream = load("res://Game Over/heartbroke1.wav")
+			$AudioStreamPlayer.stream = load("res://iso/scenes/game-over/heartbroke1.wav")
 			$AudioStreamPlayer.play()
 		60:
 			$Camera.scroller_zoom = 0.6
 			$Heart.frame = 1
 			$Camera.scrollershake = 6
 		80:
-			$AudioStreamPlayer.stream = load("res://Game Over/heartbroke2reversed.wav")
+			$AudioStreamPlayer.stream = load("res://iso/scenes/game-over/heartbroke2reversed.wav")
 			$AudioStreamPlayer.play()
 		117:
-			$AudioStreamPlayer.stream = load("res://Game Over/heartbroke2.wav")
+			$AudioStreamPlayer.stream = load("res://iso/scenes/game-over/heartbroke2.wav")
 			$AudioStreamPlayer.play()
 		120:
 			$Camera.scroller_zoom = 0.6

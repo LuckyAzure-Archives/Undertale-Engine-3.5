@@ -239,6 +239,7 @@ font_data = ExtResource( 48 )
 font_data = ExtResource( 47 )
 
 [node name="Battle" type="Node2D"]
+position = Vector2( 0, -1 )
 script = ExtResource( 9 )
 
 [node name="Camera" type="Camera2D" parent="."]
@@ -256,7 +257,6 @@ z_index = 1
 [node name="WalkingSoul" type="AnimatedSprite" parent="Soul/Soul"]
 visible = false
 frames = SubResource( 31 )
-frame = 1
 playing = true
 offset = Vector2( 0, 4 )
 

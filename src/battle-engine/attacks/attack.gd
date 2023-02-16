@@ -26,11 +26,10 @@ func _process(delta):
 	else:
 		Timer3 = 0
 
-var gasterblasterload = load("res://src/battle-engine/attacks/gaster-blaster/Gaster Blaster.tscn")
-var GasterBlaster = gasterblasterload.instance()
+const gasterblasterload = preload("res://src/battle-engine/attacks/gaster-blaster/Gaster Blaster.tscn")
 
 func Gasterblaster(position, angle, size, from, lasertime, waittime, move, moveshot, moveshotspeed):
-	GasterBlaster = gasterblasterload.instance()
+	var GasterBlaster = gasterblasterload.instance()
 	Global.scene().add_child(GasterBlaster)
 	GasterBlaster.pos = position
 	GasterBlaster.angle = angle
@@ -42,11 +41,10 @@ func Gasterblaster(position, angle, size, from, lasertime, waittime, move, moves
 	GasterBlaster.changeposshot = moveshot
 	GasterBlaster.changeposshotspeed = moveshotspeed
 
-var boneload = load("res://src/battle-engine/attacks/bone/Bone.tscn")
-var bone = boneload.instance()
+const boneload = preload("res://src/battle-engine/attacks/bone/Bone.tscn")
 
 func simplebone(position,size,movepos,lifetime):
-	bone = boneload.instance()
+	var bone = boneload.instance()
 	Global.scene().add_child(bone)
 	bone.pos = position
 	bone.size = size
@@ -54,7 +52,7 @@ func simplebone(position,size,movepos,lifetime):
 	bone.lifetime = lifetime
 
 func normalbone(position,size,angle,movepos,movesize,minsize,maxsize,moveangle,lifetime):
-	bone = boneload.instance()
+	var bone = boneload.instance()
 	Global.scene().add_child(bone)
 	bone.pos = position
 	bone.size = size
@@ -67,7 +65,7 @@ func normalbone(position,size,angle,movepos,movesize,minsize,maxsize,moveangle,l
 	bone.lifetime = lifetime
 
 func advancedbone(position,size,angle,movepos,movesize,minsize,maxsize,moveangle,changepos,changesize,changeangle,bounce,bouncespeed,lifetime):
-	bone = boneload.instance()
+	var bone = boneload.instance()
 	Global.scene().add_child(bone)
 	bone.pos = position
 	bone.size = size

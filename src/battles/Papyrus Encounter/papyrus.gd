@@ -4,9 +4,9 @@ var BattleFolderName = "Papyrus Encounter"
 
 var PlayerName = "Sans"
 var LV = 1
-var HP = 80
-var HPmax = 80
-var HPKR = 80
+var HP = 48
+var HPmax = 48
+var HPKR = 48
 var HPTYPE = ""
 var ATK = 2000
 

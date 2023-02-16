@@ -38,9 +38,8 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Bone" type="KinematicBody2D"]
-light_mask = 1024
-z_index = 2
+[node name="Bone" type="Position2D"]
+z_index = 1
 script = ExtResource( 7 )
 
 [node name="Bone Bottom" type="AnimatedSprite" parent="."]
