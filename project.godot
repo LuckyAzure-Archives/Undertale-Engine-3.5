@@ -11,17 +11,19 @@ config_version=4
 [application]
 
 config/name="Undertale Engine"
-run/main_scene="res://Battles/Battle Template.tscn"
-boot_splash/image="res://bootscreen.png"
+run/main_scene="res://src/battles/Papyrus Encounter/papyrus.tscn"
+boot_splash/show_image=false
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 
 [autoload]
 
-Global="*res://Global.gd"
-Attack="*res://Battle Engine/Attacks/Attack.gd"
-Battle="*res://Battle Engine/Battle.gd"
-Effect="*res://Battle Engine/Effects/Effects.tscn"
+Global="*res://src/Global.gd"
+Attack="*res://src/battle-engine/attacks/attack.gd"
+Battle="*res://src/battle-engine/Battle.gd"
+Effect="*res://src/battle-engine/effects/Effects.tscn"
 
 [debug]
 
@@ -172,4 +174,3 @@ common/enable_pause_aware_picking=true
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
 environment/default_clear_color=Color( 0, 0, 0, 1 )
-environment/default_environment="res://Chars/decice/default_env.tres"

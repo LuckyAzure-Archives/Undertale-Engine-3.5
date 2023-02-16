@@ -1,0 +1,80 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://iso/battle-engine/attacks/bone/BoneTop_2.png" type="Texture" id=1]
+[ext_resource path="res://iso/battle-engine/attacks/bone/BoneMiddle_2.png" type="Texture" id=2]
+[ext_resource path="res://iso/battle-engine/attacks/bone/BoneBottom_1.png" type="Texture" id=3]
+[ext_resource path="res://iso/battle-engine/attacks/bone/BoneTop_1.png" type="Texture" id=4]
+[ext_resource path="res://iso/battle-engine/attacks/bone/BoneMiddle_1.png" type="Texture" id=5]
+[ext_resource path="res://iso/battle-engine/attacks/bone/BoneBottom_2.png" type="Texture" id=6]
+[ext_resource path="res://src/battle-engine/attacks/bone/Bone.gd" type="Script" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 4, 2.5 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 4, 0.5 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Bone" type="KinematicBody2D"]
+light_mask = 1024
+z_index = 2
+script = ExtResource( 7 )
+
+[node name="Bone Bottom" type="AnimatedSprite" parent="."]
+light_mask = 1024
+frames = SubResource( 1 )
+offset = Vector2( 0, -3 )
+
+[node name="Hurtbox" type="Area2D" parent="Bone Bottom"]
+position = Vector2( 0, -3.5 )
+
+[node name="Collision" type="CollisionShape2D" parent="Bone Bottom/Hurtbox"]
+shape = SubResource( 5 )
+
+[node name="Bone Middle" type="AnimatedSprite" parent="Bone Bottom"]
+light_mask = 1024
+position = Vector2( 0, -6 )
+frames = SubResource( 2 )
+offset = Vector2( 0, -0.5 )
+
+[node name="Hurtbox" type="Area2D" parent="Bone Bottom/Bone Middle"]
+position = Vector2( 0, 6 )
+
+[node name="Collision" type="CollisionShape2D" parent="Bone Bottom/Bone Middle/Hurtbox"]
+position = Vector2( 0, -6.5 )
+shape = SubResource( 4 )
+
+[node name="Bone Top" type="AnimatedSprite" parent="Bone Bottom/Bone Middle"]
+light_mask = 1024
+position = Vector2( 0, -1 )
+frames = SubResource( 3 )
+offset = Vector2( 0, -3 )
+
+[node name="Hurtbox" type="Area2D" parent="Bone Bottom/Bone Middle/Bone Top"]
+
+[node name="Collision" type="CollisionShape2D" parent="Bone Bottom/Bone Middle/Bone Top/Hurtbox"]
+position = Vector2( 0, -2.5 )
+shape = SubResource( 5 )

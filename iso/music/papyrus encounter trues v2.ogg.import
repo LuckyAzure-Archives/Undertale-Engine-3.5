@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/papyrus encounter trues v2.ogg-718023934525bb12045ab12a57a25961.oggstr"
+
+[deps]
+
+source_file="res://iso/music/papyrus encounter trues v2.ogg"
+dest_files=[ "res://.import/papyrus encounter trues v2.ogg-718023934525bb12045ab12a57a25961.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

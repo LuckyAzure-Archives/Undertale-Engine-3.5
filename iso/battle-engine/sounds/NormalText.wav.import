@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/NormalText.wav-3da12a4b4e564dc9867cb26e2dd4f985.sample"
+
+[deps]
+
+source_file="res://iso/battle-engine/sounds/NormalText.wav"
+dest_files=[ "res://.import/NormalText.wav-3da12a4b4e564dc9867cb26e2dd4f985.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
