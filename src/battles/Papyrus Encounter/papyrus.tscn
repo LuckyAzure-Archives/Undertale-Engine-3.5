@@ -257,7 +257,6 @@ z_index = 1
 [node name="WalkingSoul" type="AnimatedSprite" parent="Soul/Soul"]
 visible = false
 frames = SubResource( 31 )
-frame = 1
 playing = true
 offset = Vector2( 0, 4 )
 

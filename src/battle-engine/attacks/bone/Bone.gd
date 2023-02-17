@@ -1,10 +1,10 @@
-extends Position2D
+extends KinematicBody2D
 
 var pos = Vector2(320,240)
 var size = 20
 var angle = 0
 
-var movepos = Vector2(2,0)
+var movepos = Vector2(0,0)
 var movesize = 0
 var moveangle = 0
 
@@ -30,7 +30,7 @@ var bouncespeed = 0
 
 var scrollspeed = 0.05
 
-var lifetime = 100
+var lifetime = 1000
 
 var type = ""
 
@@ -47,9 +47,6 @@ func _process(delta):
 			"orange":
 				modulate = Color(1,0.65,0)
 				rename = "HurtboxOrange"
-		$"Bone Bottom/Hurtbox".name = rename
-		$"Bone Bottom/Bone Middle/Hurtbox".name = rename
-		$"Bone Bottom/Bone Middle/Bone Top/Hurtbox".name = rename
 		$"Bone Bottom/Bone Middle".scale.y = size
 		rotation_degrees = angle
 		position = pos
@@ -74,12 +71,9 @@ func _process(delta):
 			position = position.linear_interpolate(gotopos, (scrollspeed * (delta / 0.016667)))
 			$"Bone Bottom/Bone Middle".scale.y += ((size + (sin(timer * bouncespeed) * bounce)) - $"Bone Bottom/Bone Middle".scale.y) * (scrollspeed * (delta / 0.016667))
 			rotation_degrees = lerp(rotation_degrees,angle,(scrollspeed * (delta / 0.016667)))
-	print(get_child_count())
+	$Hurtbox/Collision.scale.y = 6 + ($"Bone Bottom/Bone Middle".scale.y * 1) + 6
+	$Hurtbox/Collision.position.y = -3 - ($"Bone Bottom/Bone Middle".scale.y * 0.5) - 3
 	if timer > lifetime:
-		if get_child_count() == 1:
-			queue_free()
-			print("ded")
+		queue_free()
 	elif position.x < -100 or position.x > 740 or position.y < -100 or position.y > 580:
-		if get_child_count() == 1:
-			queue_free()
-			print(get_child_count())
+		queue_free()

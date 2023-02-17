@@ -4,7 +4,7 @@ func Bone(counter):
 	match counter:
 		60:
 			Attack.advancedbone(
-				Vector2(220,385), #position
+				Vector2(220,386), #position
 				120, #size
 				0, #angle
 				Vector2(3 ,0), #movepos
@@ -19,7 +19,7 @@ func Bone(counter):
 		90:
 			for i in 5:
 					Attack.advancedbone(
-					Vector2(240 - 12 * i,383), #position
+					Vector2(240 - 12 * i,386), #position
 					20, #size
 					0, #angle
 					Vector2(4 ,0), #movepos
@@ -45,8 +45,8 @@ func Bone(counter):
 		270:
 			for i in 21:
 				Attack.advancedbone(
-					Vector2(200 - (12 * i),258), #position
-					57, #size
+					Vector2(200 - (12 * i),256), #position
+					60, #size
 					180, #angle
 					Vector2(3 ,0), #movepos
 					0,0,0, #movesize, minsize, maxsize
@@ -59,7 +59,7 @@ func Bone(counter):
 				)
 			for i in 2:
 				Attack.advancedbone(
-					Vector2(200 - 120 * i,383), #position
+					Vector2(200 - 120 * i,386), #position
 					15, #size
 					0, #angle
 					Vector2(3,0), #movepos
@@ -72,7 +72,7 @@ func Bone(counter):
 					200 #lifetime
 				)
 				Attack.advancedbone(
-					Vector2(140 - 120 * i,383 - 30), #position
+					Vector2(140 - 120 * i,386 - 30), #position
 					15, #size
 					0, #angle
 					Vector2(3,0), #movepos
@@ -85,7 +85,7 @@ func Bone(counter):
 					200 #lifetime
 				)
 			Attack.advancedbone(
-				Vector2(200 - 240,383), #position
+				Vector2(200 - 240,386), #position
 				15, #size
 				0, #angle
 				Vector2(3,0), #movepos
@@ -99,7 +99,7 @@ func Bone(counter):
 			)
 		290:
 			Attack.advancedbone(
-				Vector2(440,385), #position
+				Vector2(440,386), #position
 				118, #size
 				0, #angle
 				Vector2(-2 ,0), #movepos
@@ -113,7 +113,7 @@ func Bone(counter):
 			)
 		370:
 			Attack.advancedbone(
-				Vector2(180,385), #position
+				Vector2(180,386), #position
 				118, #size
 				0, #angle
 				Vector2(2 ,0), #movepos
@@ -128,7 +128,7 @@ func Bone(counter):
 		400:
 			for i in 4:
 				Attack.advancedbone(
-					Vector2(440 + i * 12,385), #position
+					Vector2(440 + i * 12,386), #position
 					40 + i * 12, #size
 					0, #angle
 					Vector2(-2 ,0), #movepos
@@ -141,7 +141,7 @@ func Bone(counter):
 					200 #lifetime
 				)
 				Attack.advancedbone(
-					Vector2((440 + 48) + i * 12,385), #position
+					Vector2((440 + 48) + i * 12,386), #position
 					40 + 36 - i * 12, #size
 					0, #angle
 					Vector2(-2 ,0), #movepos
@@ -156,7 +156,7 @@ func Bone(counter):
 		440:
 			for i in 4:
 				Attack.advancedbone(
-					Vector2(200 - i * 12,385), #position
+					Vector2(200 - i * 12,386), #position
 					40 + i * 12, #size
 					0, #angle
 					Vector2(2 ,0), #movepos
@@ -169,7 +169,7 @@ func Bone(counter):
 					200 #lifetime
 				)
 				Attack.advancedbone(
-					Vector2((200 - 48) - i * 12,385), #position
+					Vector2((200 - 48) - i * 12,386), #position
 					40 + 36 - i * 12, #size
 					0, #angle
 					Vector2(2 ,0), #movepos
@@ -181,11 +181,14 @@ func Bone(counter):
 					0,0, #bounce, bouncespeed
 					200 #lifetime
 				)
-
+		500:
+			bonewheels()
+		560:
+			bonewheels()
 
 func Attack():
 	#Effect.Wave_Effect(0.02,100)
-	#Bone(Attack.GlobalCounter)
+	Bone(Attack.GlobalCounter)
 	match Attack.GlobalCounter:
 		0:
 			Global.scene().get_node("Music").play(0.0)
@@ -212,7 +215,6 @@ func Attack():
 			Global.scene().get_node("Camera")._zoom = 1
 			Global.scene().get_node("Camera").scrollershake = 10
 		388:
-			bonewheels()
 			shakeass()
 		506:
 			shakeass()
@@ -239,7 +241,7 @@ func shakeass():
 func bonewheels():
 	for i in 15:
 		Attack.advancedbone(
-			Vector2(150,385), #position
+			Vector2(140,385), #position
 			40, #size
 			i * 24, #angle
 			Vector2(3 ,0), #movepos
@@ -249,10 +251,10 @@ func bonewheels():
 			0, #changesize
 			0, #changeangle
 			0,0, #bounce, bouncespeed
-			200 #lifetime
+			125 #lifetime
 		)
 		Attack.advancedbone(
-			Vector2(490,240), #position
+			Vector2(500,240), #position
 			40, #size
 			i * 24, #angle
 			Vector2(-3 ,0), #movepos
@@ -262,5 +264,5 @@ func bonewheels():
 			0, #changesize
 			0, #changeangle
 			0,0, #bounce, bouncespeed
-			200 #lifetime
+			125 #lifetime
 		)
