@@ -92,7 +92,6 @@ func _blue_delta(delta):
 				MoveY = 0
 			if is_on_floor():
 				jump = 0
-				MoveX = 200
 			if is_on_floor() and Input.is_action_pressed("Right"):
 				MoveX = 300
 				jump = 1

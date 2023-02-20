@@ -102,14 +102,14 @@ func Bone(counter):
 				Vector2(440,386), #position
 				118, #size
 				0, #angle
-				Vector2(-2 ,0), #movepos
+				Vector2(-2.1 ,0), #movepos
 				0,0,0, #movesize, minsize, maxsize
 				0, #moveangle
 				Vector2(0.02,0), #changepos
 				0, #changesize
 				0, #changeangle
 				0,0, #bounce, bouncespeed
-				210 #lifetime
+				250 #lifetime
 			)
 		370:
 			Attack.advancedbone(
@@ -185,6 +185,11 @@ func Bone(counter):
 			bonewheels()
 		560:
 			bonewheels()
+		680:
+			Global.scene().get_node("Soul/Soul").Soulrotate = "Left"
+			Global.scene().get_node("Papyrus/Torso").play("Left")
+		780:
+			Global.scene().get_node("Papyrus/Torso").play("Default")
 
 func Attack():
 	#Effect.Wave_Effect(0.02,100)
